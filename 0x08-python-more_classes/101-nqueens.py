@@ -53,7 +53,8 @@ class NQueensSolver:
         Solve the N-queens problem and return all solutions.
 
         Returns:
-            list: List of solutions, where each solution is a list of [row, col] coordinates.
+            list: List of solutions, where each solution is a list of
+            [row, col] coordinates.
         """
         self.backtrack(0)
         return self.solutions
