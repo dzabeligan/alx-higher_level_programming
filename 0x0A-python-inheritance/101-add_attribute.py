@@ -17,7 +17,7 @@ def add_attribute(obj, attr_name, attr_value):
     Returns:
         None
     """
-    if not hasattr(obj, '__dict__') and not hasattr(type(obj), '__slots__'):
+    if not hasattr(obj, '__dict__'):
         raise TypeError("can't add new attribute")
 
     setattr(obj, attr_name, attr_value)
