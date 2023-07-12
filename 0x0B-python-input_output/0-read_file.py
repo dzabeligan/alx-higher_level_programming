@@ -3,7 +3,7 @@
 
 
 def read_file(filename=""):
-    """Defines a text file-reading function.
+    """Print the contents of a UTF8 text file to stdout.
 
     Args:
         filename (str, optional): filename. Defaults to "".
