@@ -2,24 +2,6 @@
 """Implement find_peak"""
 
 
-def find_peak_helper(list_of_integers, previous_number):
-    """Recursive approach to find the peak value in a list of integers
-
-    Args:
-        list_of_integers (int[]): unsorted integer array
-        previous_number (int): previous number
-
-    Returns:
-        int: first peak found
-    """
-    if len(list_of_integers) == 1:
-        return max(list_of_integers[0], previous_number)
-    if previous_number > list_of_integers[0]:
-        return previous_number
-
-    return find_peak_helper(list_of_integers[1:], list_of_integers[0])
-
-
 def find_peak(list_of_integers):
     """Find a peak in a list of unsorted integers.
     Any peak found is an acceptable solution.
@@ -30,7 +12,21 @@ def find_peak(list_of_integers):
     Returns:
         int: first peak found
     """
-    if list_of_integers == []:
-        return None
+    left = 0
+    right = len(list_of_integers) - 1
 
-    return find_peak_helper(list_of_integers, list_of_integers[0])
+    while left < right:
+        mid = left + (right - left) // 2
+
+        # Check if the middle element is a peak
+        if list_of_integers[mid] > list_of_integers[mid + 1]:
+            # If the mid element is greater than the next element,
+            # it's a peak; search the left half
+            right = mid
+        else:
+            # If the mid element is less than or equal to the next element,
+            # it's not a peak; search the right half
+            left = mid + 1
+
+    # The peak is found when left and right converge
+    return list_of_integers[left]
