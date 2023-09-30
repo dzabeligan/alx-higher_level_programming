@@ -7,8 +7,9 @@ Usage: ./7-error_code.py <URL>
 import sys
 import requests
 
-res = requests.get(sys.argv[1], timeout=60)
-if res.status_code >= 400:
-    print(f"Error code: {res.status_code}")
-else:
-    print(res.text)
+if __name__ == "__main__":
+    res = requests.get(sys.argv[1], timeout=60)
+    if res.status_code >= 400:
+        print(f"Error code: {res.status_code}")
+    else:
+        print(res.text)

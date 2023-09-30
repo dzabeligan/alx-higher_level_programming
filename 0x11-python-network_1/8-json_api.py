@@ -8,16 +8,17 @@ Usage: ./8-json_api.py <letter>
 import sys
 import requests
 
-CHAR = "" if len(sys.argv) == 1 else sys.argv[1]
-data = {"q": CHAR}
+if __name__ == "__main__":
+    CHAR = "" if len(sys.argv) == 1 else sys.argv[1]
+    data = {"q": CHAR}
 
-res = requests.post("http://0.0.0.0:5000/search_user",
-                    data=data, timeout=60)
-try:
-    json = res.json()
-    if json == {}:
-        print("No result")
-    else:
-        print(f"[{json.get('id')}] {json.get('name')}")
-except ValueError:
-    print("Not a valid JSON")
+    res = requests.post("http://0.0.0.0:5000/search_user",
+                        data=data, timeout=60)
+    try:
+        json = res.json()
+        if json == {}:
+            print("No result")
+        else:
+            print(f"[{json.get('id')}] {json.get('name')}")
+    except ValueError:
+        print("Not a valid JSON")

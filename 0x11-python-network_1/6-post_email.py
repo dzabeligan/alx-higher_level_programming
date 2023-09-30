@@ -8,5 +8,6 @@ import sys
 import requests
 
 
-res = requests.post(sys.argv[1], data={"email": sys.argv[2]}, timeout=60)
-print(res.text)
+if __name__ == "__main__":
+    res = requests.post(sys.argv[1], data={"email": sys.argv[2]}, timeout=60)
+    print(res.text)
